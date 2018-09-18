@@ -4,7 +4,7 @@ const express = require('express');
 const logger = require('./logger');
 const bodyParser = require('body-parser');
 
-const router = require('./middlewares/api');
+const router = require('./middlewares/router');
 
 const argv = require('./argv');
 const port = require('./port');

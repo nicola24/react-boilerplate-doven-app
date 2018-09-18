@@ -1,12 +1,12 @@
 const express = require('express');
-const db = require('../../db/db');
+const db = require('../../db/models');
 
 const router = express.Router();
 
 router.route('/getstrings').get((req, res, next) => {
   db.getAllStrings()
     .then(strings => {
-      res.send(strings);
+      res.json(strings);
     })
     .catch(err => {
       next(err);

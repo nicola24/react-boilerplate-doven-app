@@ -11,10 +11,8 @@ const appStringSchema = new mongoose.Schema({
 
 const StringApp = mongoose.model('StringApp', appStringSchema);
 
-// find all strings
 const getAllStrings = () => StringApp.find();
 
-// create one string
 const createString = str => StringApp.create(str);
 
 module.exports = {
