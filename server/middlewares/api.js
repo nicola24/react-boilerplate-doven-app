@@ -3,7 +3,6 @@ const db = require('../../db/db');
 
 const router = express.Router();
 
-// GET => api/getstrings fetch all the strings
 router.route('/getstrings').get((req, res, next) => {
   db.getAllStrings()
     .then(strings => {
@@ -14,7 +13,6 @@ router.route('/getstrings').get((req, res, next) => {
     });
 });
 
-// POST => api/insertstring insert a new string
 router.route('/insertstring').post((req, res, next) => {
   db.createString(req.body)
     .then(() => {
