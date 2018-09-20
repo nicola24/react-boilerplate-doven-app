@@ -7,9 +7,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+
+import Form from 'components/Form/Loadable';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -22,11 +23,7 @@ export class Submit extends React.Component {
   render() {
     return (
       <div>
-        <Helmet>
-          <title>Submit</title>
-          <meta name="description" content="Description of Submit" />
-        </Helmet>
-        <h1>SUBMIT PAGE</h1>
+        <Form />
       </div>
     );
   }

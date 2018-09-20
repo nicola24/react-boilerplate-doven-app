@@ -7,9 +7,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+
+import Strings from 'components/Strings/Loadable';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -19,14 +20,15 @@ import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Display extends React.Component {
+  componentDidMount() {
+    fetch('./getstrings')
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
   render() {
     return (
       <div>
-        <Helmet>
-          <title>Display</title>
-          <meta name="description" content="Description of Display" />
-        </Helmet>
-        <h1>DISPLAY PAGE</h1>
+        <Strings />
       </div>
     );
   }

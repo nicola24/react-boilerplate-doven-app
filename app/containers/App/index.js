@@ -14,10 +14,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Display from 'containers/Display/Loadable';
 import Submit from 'containers/Submit/Loadable';
-import Navigation from 'components/Navigation';
+import Navigation from 'components/Navigation/Loadable';
+import NotFoundPage from 'components/NotFoundPage/Loadable';
 
 export default function App() {
   return (

@@ -5,23 +5,14 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import NavBar from './NavBar';
+import A from './A';
 
-function Navigation() {
-  return (
-    <div>
-      <Link to="/" href="/">
-        Display
-      </Link>
-      <Link to="/submit" href="/submit">
-        Submit
-      </Link>
-    </div>
-  );
-}
-
-Navigation.propTypes = {};
+const Navigation = () => (
+  <NavBar>
+    <A to="/">Display</A>
+    <A to="/submit">Submit</A>
+  </NavBar>
+);
 
 export default Navigation;
