@@ -20,11 +20,6 @@ import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Display extends React.Component {
-  componentDidMount() {
-    fetch('./getstrings')
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
   render() {
     return (
       <div>
