@@ -15,8 +15,21 @@ const selectDisplayDomain = state => state.get('display', initialState);
  * Default selector used by Display
  */
 
-const makeSelectDisplay = () =>
-  createSelector(selectDisplayDomain, substate => substate.toJS());
+// const makeSelectDisplay = () =>
+//   createSelector(selectDisplayDomain, substate => substate.toJS());
 
-export default makeSelectDisplay;
-export { selectDisplayDomain };
+const makeStringSelector = () =>
+  createSelector(selectDisplayDomain, substate => substate.get('strings'));
+
+const makeLoadingSelector = () =>
+  createSelector(selectDisplayDomain, substate => substate.get('loading'));
+
+const makeErrorSelector = () =>
+  createSelector(selectDisplayDomain, substate => substate.get('error'));
+
+export {
+  // makeSelectDisplay,
+  makeStringSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
+};

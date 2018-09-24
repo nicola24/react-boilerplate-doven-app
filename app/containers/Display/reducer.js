@@ -20,8 +20,7 @@ export const initialState = fromJS({
 function displayReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_STRINGS_BEGIN:
-      // Mark the state as "loading" so we can show a loading message
-      // Also, reset any errors.
+      // Set state as "loading" and reset errors
       return {
         // same as doing
         // return state
@@ -32,8 +31,7 @@ function displayReducer(state = initialState, action) {
       };
 
     case LOAD_STRINGS_SUCCESS:
-      // All done: set loading "false".
-      // Also, replace the strings with the ones from the server
+      // Set loading "false" and replace the strings with the ones from the server
       return {
         ...state,
         loading: false,
@@ -41,9 +39,8 @@ function displayReducer(state = initialState, action) {
       };
 
     case LOAD_STRINGS_ERROR:
-      // The request failed, but it did stop, so set loading to "false".
-      // Save the error, and we can display it somewhere
-      // Since it failed, we don't have srings to display anymore, so set it empty.
+      // The request failed, set loading to "false", save the error (for display)
+      // and set srings to empty
       return {
         ...state,
         loading: false,

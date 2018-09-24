@@ -5,54 +5,50 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 
 import Form from 'components/Form/Loadable';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import makeSelectSubmit from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-
 /* eslint-disable react/prefer-stateless-function */
 export class Submit extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      stateDescription: '',
+    };
+    this.handleDescription = this.handleDescription.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleDescription(e) {
+    this.setState({ stateDescription: e.target.value });
+  }
+
+  handleSubmit(e) {
+    const { stateDescription } = this.state;
+
+    fetch('/insertstring', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        description: stateDescription,
+      }),
+    });
+
+    e.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <Form />
+        <Form
+          onChangeDescription={this.handleDescription}
+          onSubmit={this.handleSubmit}
+        />
       </div>
     );
   }
 }
 
-Submit.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  submit: makeSelectSubmit(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-const withReducer = injectReducer({ key: 'submit', reducer });
-const withSaga = injectSaga({ key: 'submit', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(Submit);
+export default Submit;

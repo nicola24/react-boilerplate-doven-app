@@ -6,12 +6,12 @@
 
 import React from 'react';
 import NavBar from './NavBar';
-import A from './A';
+import HeaderLink from './HeaderLink';
 
 const Navigation = () => (
   <NavBar>
-    <A to="/">Display</A>
-    <A to="/submit">Submit</A>
+    <HeaderLink to="/">Display</HeaderLink>
+    <HeaderLink to="/submit">Submit</HeaderLink>
   </NavBar>
 );
 

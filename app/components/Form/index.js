@@ -5,22 +5,30 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Input from './Input';
 import Submit from './Submit';
 import Div from './Div';
 
-function Form() {
+function Form({ onChangeDescription, onSubmit }) {
   return (
     <Div>
-      <form>
-        <Input type="text" placeholder="Enter input.." />
+      <form onSubmit={onSubmit}>
+        <Input
+          type="text"
+          placeholder="Enter input.."
+          onChange={onChangeDescription}
+          required
+        />
         <Submit type="submit" value="Submit" />
       </form>
     </Div>
   );
 }
 
-Form.propTypes = {};
+Form.propTypes = {
+  onChangeDescription: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;

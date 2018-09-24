@@ -5,19 +5,25 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Div from './Div';
 
-function Strings() {
+function Strings({ loading, string, error }) {
   return (
     <Div>
       <ul>
-        <li>Strings Component</li>
+        <li>{string}</li>
+        {console.log(loading)}
+        {console.log(error)}
       </ul>
     </Div>
   );
 }
 
-Strings.propTypes = {};
+Strings.propTypes = {
+  string: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default Strings;
